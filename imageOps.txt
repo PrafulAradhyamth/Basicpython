@@ -1,0 +1,32 @@
+from PIL import Image, ImageFilter, ImageChops
+
+import webbrowser
+img = Image.open('test.jpg')
+
+#img.show()
+
+size = (640,640)
+
+img.thumbnail(size)
+
+img.save('testResult.jpg')
+
+img = Image.open('test.jpg')
+img1= Image.open('testResult.jpg')
+
+webbrowser.open('testResult.jpg')
+
+img2 = img.filter(ImageFilter.BLUR)
+
+img2.save("testBlur.jpg", "JPEG")
+
+webbrowser.open('testBlur.jpg')
+
+img3 = ImageChops.add(img1, img2, 1, 0)
+img3.save("testMix.jpg", "JPEG")
+
+webbrowser.open('testMix.jpg')
+
+
+
+
